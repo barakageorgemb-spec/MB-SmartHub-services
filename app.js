@@ -1,6 +1,6 @@
 /* MB SmartHub Services. Set your Supabase project URL and anon key below. */
 const SUPABASE_URL = "https://zjssnjjmuzgcddzgzxgv.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_r3V1WqHZQBfUf2U9lRMM4w_4r5xA66s.creating the Admin account in Authentication > Userscreating the Admin account in Authentication > Users.sb_publishable_r3V1WqHZQBfUf2U9lRMM4w_4r5xA66s";
+const SUPABASE_ANON_KEY = "sb_publishable_r3V1WqHZQBfUf2U9lRMM4w_4r5xA66s";creating the Admin account in Authentication > Userscreating the Admin account in Authentication > Users.
 const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("PASTE_") && !SUPABASE_ANON_KEY.includes("PASTE_");
 const db = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const $ = (s) => document.querySelector(s);
