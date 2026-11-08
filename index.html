@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102b46">
+  <title>MB SmartHub Services</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">MB</span><span>MB SmartHub <small>Services</small></span></a>
+  <div class="top-actions">
+    <button id="languageBtn" class="outline">English</button>
+    <a class="outline admin-link" href="#admin">Admin</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow" data-i18n="welcome">KARIBU MB SMARTHUB SERVICES</p>
+    <h1 data-i18n="heroTitle">Ubora wa kuku na bidhaa zake, kwa urahisi.</h1>
+    <p data-i18n="heroText">Agiza kuku wa nyama, kuku wa mayai, mayai na nyama ya kuku.</p>
+    <a class="primary" href="#shop" data-i18n="shopNow">Angalia bidhaa</a>
+  </div>
+</section>
+<main class="container">
+  <section id="shop" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow" data-i18n="ourProducts">BIDHAA ZETU</p><h2 data-i18n="shopTitle">Chagua unachohitaji</h2></div>
+      <span id="cartCount" class="cart-count">0</span>
+    </div>
+    <div id="productGrid" class="product-grid"><p class="muted">Inapakia bidhaa...</p></div>
+  </section>
+
+  <section class="section order-layout">
+    <div class="panel">
+      <p class="eyebrow" data-i18n="yourOrder">ODA YAKO</p><h2 data-i18n="cartTitle">Kikapu cha bidhaa</h2>
+      <div id="cartItems"><p class="muted" data-i18n="emptyCart">Bado hujaongeza bidhaa.</p></div>
+      <div class="total-row"><strong data-i18n="total">Jumla</strong><strong id="cartTotal">TZS 0</strong></div>
+    </div>
+    <div class="panel" id="checkout">
+      <p class="eyebrow" data-i18n="checkout">MALIZIA ODA</p><h2 data-i18n="detailsTitle">Taarifa za mteja</h2>
+      <form id="checkoutForm">
+        <label><span data-i18n="fullName">Jina kamili</span><input name="full_name" required maxlength="100" autocomplete="name"></label>
+        <label><span data-i18n="phone">Namba ya simu</span><input name="phone" required inputmode="tel" maxlength="20" placeholder="07XXXXXXXX"></label>
+        <label><span data-i18n="area">Eneo / Mtaa</span><input name="area" required maxlength="120"></label>
+        <label><span data-i18n="address">Anuani ya kufikishia</span><input name="delivery_address" required maxlength="250"></label>
+        <label><span data-i18n="deliveryDate">Tarehe ya kuhitaji bidhaa</span><input name="delivery_date" type="date" required></label>
+        <label><span data-i18n="notes">Maelezo ya ziada (si lazima)</span><textarea name="notes" rows="2" maxlength="500"></textarea></label>
+        <button class="primary full" type="submit" data-i18n="placeOrder">Tuma oda</button>
+      </form>
+      <div id="checkoutMessage" class="message" role="status"></div>
+    </div>
+  </section>
+
+  <section class="section two-col">
+    <div class="panel">
+      <p class="eyebrow" data-i18n="track">FUATILIA ODA</p><h2 data-i18n="trackTitle">Angalia hali ya oda</h2>
+      <form id="trackForm">
+        <label><span data-i18n="orderNumber">Namba ya oda</span><input name="order_number" required placeholder="MB-YYYYMMDD-XXXXXX"></label>
+        <label><span data-i18n="phone">Namba ya simu uliyotumia</span><input name="phone" required inputmode="tel"></label>
+        <button class="secondary full" type="submit" data-i18n="trackBtn">Fuatilia</button>
+      </form>
+      <div id="trackResult" class="message"></div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow" data-i18n="payment">MALIPO</p><h2 data-i18n="paymentTitle">Lipa kwa Vodacom</h2>
+      <p data-i18n="payInstruction">Tumia Lipa Namba iliyo hapa. Thibitisha malipo na biashara kabla ya kutuma fedha.</p>
+      <div class="pay-number">36669367</div>
+      <p><strong>BARAKA GEORGE MASUKE</strong></p>
+      <p class="muted small" data-i18n="manualPayment">Kwa sasa malipo yanathibitishwa na Admin; mfumo huu hauunganishwi moja kwa moja na Vodacom.</p>
+    </div>
+  </section>
+
+  <section class="section two-col">
+    <div class="panel">
+      <p class="eyebrow" data-i18n="feedback">MAONI YA WATEJA</p><h2 data-i18n="feedbackTitle">Tupe maoni yako</h2>
+      <form id="reviewForm">
+        <label><span data-i18n="yourName">Jina lako</span><input name="customer_name" required maxlength="100"></label>
+        <label><span data-i18n="rating">Alama (1 hadi 5)</span><select name="rating" required><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very poor</option></select></label>
+        <label><span data-i18n="comment">Maoni</span><textarea name="comment" required rows="3" maxlength="1000"></textarea></label>
+        <button class="secondary full" type="submit" data-i18n="sendFeedback">Tuma maoni</button>
+      </form>
+      <div id="reviewMessage" class="message"></div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow" data-i18n="contact">WASILIANA NASI</p><h2 data-i18n="contactTitle">Tuko tayari kukuhudumia</h2>
+      <p>Simu/SMS: <a href="tel:0614400673">0614400673</a></p>
+      <p>WhatsApp: <a href="https://wa.me/255747837692" target="_blank" rel="noopener">0747837692</a></p>
+      <p>Email: <a href="mailto:barakageorgemb@gmail.com">barakageorgemb@gmail.com</a></p>
+    </div>
+  </section>
+
+  <section id="admin" class="section admin-section">
+    <div class="section-heading"><div><p class="eyebrow">PRIVATE AREA</p><h2>Admin Portal</h2></div></div>
+    <div class="panel">
+      <form id="adminLoginForm" class="admin-login">
+        <label>Email ya Admin<input name="email" type="email" required autocomplete="username"></label>
+        <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+        <button class="secondary" type="submit">Ingia Admin</button>
+      </form>
+      <div id="adminMessage" class="message"></div>
+      <div id="adminPanel" hidden>
+        <div class="admin-head"><h3>Usimamizi wa oda</h3><button id="logoutBtn" class="outline" type="button">Logout</button></div>
+        <div id="adminOrders"></div>
+        <hr>
+        <h3>Ongeza / badili bidhaa</h3>
+        <form id="productForm" class="product-form">
+          <input type="hidden" name="id">
+          <label>Jina la bidhaa<input name="name" required maxlength="120"></label>
+          <label>Category<select name="category"><option value="broiler">Broiler chickens</option><option value="layers">Layer chickens</option><option value="eggs">Eggs</option><option value="chicken_meat">Chicken meat</option></select></label>
+          <label>Bei (TZS)<input name="price" type="number" min="0" step="1" required></label>
+          <label>Stock iliyopo<input name="stock" type="number" min="0" step="1" required></label>
+          <label>Maelezo<input name="description" maxlength="250"></label>
+          <button class="primary" type="submit">Hifadhi bidhaa</button>
+          <button class="outline" type="reset">Futa fomu</button>
+        </form>
+        <div id="adminProducts"></div>
+        <hr>
+        <h3>Maoni ya wateja</h3><div id="adminReviews"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><strong>MB SmartHub Services</strong><span>© <span id="year"></span> All rights reserved.</span></footer>
+</body>
+</html>
